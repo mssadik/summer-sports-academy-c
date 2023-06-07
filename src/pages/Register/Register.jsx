@@ -24,6 +24,8 @@ const Register = () => {
                 const user = result.user;
                 console.log(user);
                 updateUserProfile(name, photoURL)
+                .then(() =>{})
+                .catch(() =>{})
 
                 naviget('/')
                 const Toast = Swal.mixin({
