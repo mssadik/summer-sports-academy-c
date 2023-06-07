@@ -5,9 +5,9 @@ import Swal from "sweetalert2";
 import { FaGithub, FaGoogle } from "react-icons/fa";
 
 const Register = () => {
-    const {createUser, googleSignIn} = useContext(AuthContext);
+    const { createUser, googleSignIn, updateUserProfile } = useContext(AuthContext);
     const naviget = useNavigate();
-    const handelSubmit = event =>{
+    const handelSubmit = event => {
         event.preventDefault();
         const form = event.target;
         const name = form.name.value;
@@ -15,64 +15,69 @@ const Register = () => {
         const email = form.email.value;
         const password = form.password.value;
         const confrom = form.confrom.value;
-        const user = {name, photoURL, email, password, confrom}
+        const user = { name, photoURL, email, password, confrom }
         console.log(user);
 
         //Email password register
         createUser(email, password)
-        .then(result =>{
-            const user = result.user;
-            console.log(user);
-            const Toast = Swal.mixin({
-                toast: true,
-                position: 'top-end',
-                showConfirmButton: false,
-                timer: 3000,
-                timerProgressBar: true,
-                didOpen: (toast) => {
-                  toast.addEventListener('mouseenter', Swal.stopTimer)
-                  toast.addEventListener('mouseleave', Swal.resumeTimer)
-                }
-              })
-              
-              Toast.fire({
-                icon: 'success',
-                title: 'Signed in successfully'
-              })
-              naviget('/')
-        })
-        .catch(e =>{
-            console.log(e);
-        })
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                updateUserProfile(name, photoURL)
+
+                naviget('/')
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+
+                Toast.fire({
+                    icon: 'success',
+                    title: 'Signed in successfully'
+                })
+                
+            })
+            .catch(e => {
+                console.log(e);
+            })
+
+
 
     }
     // google register
-    const handelGoogleRegister = () =>{
+    const handelGoogleRegister = () => {
         googleSignIn()
-        .then(result =>{
-            const loggedUser = result.user;
-            console.log(loggedUser);
-            const Toast = Swal.mixin({
-                toast: true,
-                position: 'top-end',
-                showConfirmButton: false,
-                timer: 3000,
-                timerProgressBar: true,
-                didOpen: (toast) => {
-                  toast.addEventListener('mouseenter', Swal.stopTimer)
-                  toast.addEventListener('mouseleave', Swal.resumeTimer)
-                }
-              })
-              
-              Toast.fire({
-                icon: 'success',
-                title: 'Signed in successfully'
-              })
-              naviget('/')
-        })
-        .catch(e =>{
-            console.log(e);
-        })
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser);
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+
+                Toast.fire({
+                    icon: 'success',
+                    title: 'Signed in successfully'
+                })
+                naviget('/')
+            })
+            .catch(e => {
+                console.log(e);
+            })
     }
 
 
@@ -83,19 +88,19 @@ const Register = () => {
                 <form onSubmit={handelSubmit}>
                     <div className="mb-4">
                         <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-600"> Name</label>
-                        <input type="name"  name="name" className="w-full border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter your email address" required />
+                        <input type="name" name="name" className="w-full border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter your email address" required />
                     </div>
                     <div className="mb-4">
                         <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-600">Photo</label>
-                        <input type="text"  name="photoURL" className="w-full border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter your email address" required />
+                        <input type="text" name="photoURL" className="w-full border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter your email address" required />
                     </div>
                     <div className="mb-4">
                         <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-600">Email </label>
-                        <input type="email"  name="email" className="w-full border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter your email address" required />
+                        <input type="email" name="email" className="w-full border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter your email address" required />
                     </div>
                     <div className="mb-4">
                         <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-600">Password</label>
-                        <input type="password"  name="password" className="w-full border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter your password" required />
+                        <input type="password" name="password" className="w-full border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter your password" required />
                     </div>
                     <div className="mb-4">
                         <label htmlFor="confrom" className="block mb-2 text-sm font-medium text-gray-600">Password</label>
@@ -116,7 +121,7 @@ const Register = () => {
                     <div className="w-1/2 bg-lime-600 p-2 flex items-center justify-center text-white"><button><FaGithub></FaGithub> <span>Github</span></button> </div>
                 </div>
                 <div className="text-center mt-4">
-                <span className="text-gray-600">Already have an account <Link to="/login">Login</Link></span>
+                    <span className="text-gray-600">Already have an account <Link to="/login">Login</Link></span>
                 </div>
             </div>
         </div>
