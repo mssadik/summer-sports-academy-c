@@ -1,6 +1,11 @@
-import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../Providers/AuthProvider";
+import Swal from "sweetalert2";
 
 const Login = () => {
+    const naviget = useNavigate();
+    const {signUser} = useContext(AuthContext);
     const handelSubmit = event =>{
         event.preventDefault();
         const form = event.target;
@@ -8,6 +13,22 @@ const Login = () => {
         const password = form.password.value;
         const user = {email, password};
         console.log(user);
+        signUser(email, password)
+        .then(result =>{
+            const loggedUser = result.user;
+            console.log(loggedUser);
+            naviget('/')
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Login Successfull',
+                showConfirmButton: false,
+                timer: 1500
+              })
+        })
+        .catch(e =>{
+            console.log(e);
+        })
     }
     return (
         <div className="min-h-screen flex items-center justify-center">

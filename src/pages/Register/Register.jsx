@@ -1,6 +1,12 @@
-import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../Providers/AuthProvider";
+import Swal from "sweetalert2";
+import { FaGithub, FaGoogle } from "react-icons/fa";
 
 const Register = () => {
+    const {createUser, googleSignIn} = useContext(AuthContext);
+    const naviget = useNavigate();
     const handelSubmit = event =>{
         event.preventDefault();
         const form = event.target;
@@ -11,6 +17,62 @@ const Register = () => {
         const confrom = form.confrom.value;
         const user = {name, photoURL, email, password, confrom}
         console.log(user);
+
+        //Email password register
+        createUser(email, password)
+        .then(result =>{
+            const user = result.user;
+            console.log(user);
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                  toast.addEventListener('mouseenter', Swal.stopTimer)
+                  toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+              })
+              
+              Toast.fire({
+                icon: 'success',
+                title: 'Signed in successfully'
+              })
+              naviget('/')
+        })
+        .catch(e =>{
+            console.log(e);
+        })
+
+    }
+    // google register
+    const handelGoogleRegister = () =>{
+        googleSignIn()
+        .then(result =>{
+            const loggedUser = result.user;
+            console.log(loggedUser);
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                  toast.addEventListener('mouseenter', Swal.stopTimer)
+                  toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+              })
+              
+              Toast.fire({
+                icon: 'success',
+                title: 'Signed in successfully'
+              })
+              naviget('/')
+        })
+        .catch(e =>{
+            console.log(e);
+        })
     }
 
 
@@ -48,6 +110,11 @@ const Register = () => {
                     </div>
                     <button type="submit" className="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">Register Now</button>
                 </form>
+                <div className="divider">OR</div>
+                <div className="flex gap-1">
+                    <div className="w-1/2 bg-lime-600 p-2 flex items-center justify-center text-white"><button onClick={handelGoogleRegister}><FaGoogle></FaGoogle> <span>Google</span></button></div>
+                    <div className="w-1/2 bg-lime-600 p-2 flex items-center justify-center text-white"><button><FaGithub></FaGithub> <span>Github</span></button> </div>
+                </div>
                 <div className="text-center mt-4">
                 <span className="text-gray-600">Already have an account <Link to="/login">Login</Link></span>
                 </div>
