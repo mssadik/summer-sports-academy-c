@@ -28,7 +28,7 @@ const Footer = () => {
       </div>
       <hr className='w-[900px] mx-auto'/>
       <div className="text-center mt-20">
-        <p className="text-gray-400">© {new Date().getFullYear()} Your Company. All rights reserved.</p>
+        <p className="text-gray-400">© {new Date().getFullYear()} Summer Sports Academy. All rights reserved.</p>
       </div>
     </footer>
   );
