@@ -2,10 +2,11 @@ import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 import Swal from "sweetalert2";
+import { FaGithub, FaGoogle } from "react-icons/fa";
 
 const Login = () => {
     const naviget = useNavigate();
-    const {signUser} = useContext(AuthContext);
+    const {signUser, googleSignIn} = useContext(AuthContext);
     const handelSubmit = event =>{
         event.preventDefault();
         const form = event.target;
@@ -30,6 +31,13 @@ const Login = () => {
             console.log(e);
         })
     }
+    const handelGoogleLogin = () =>{
+        googleSignIn()
+        .then(() =>{
+            naviget('/')
+        })
+        .then(() =>{})
+    }
     return (
         <div className="min-h-screen flex items-center justify-center">
             <div className="max-w-md w-full bg-white p-8 rounded-lg shadow-md">
@@ -52,6 +60,11 @@ const Login = () => {
                     </div>
                     <button type="submit" className="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">Log in</button>
                 </form>
+                <div className="divider">OR</div>
+                <div className="flex gap-1">
+                    <div className="w-1/2 bg-lime-600 p-2 flex items-center justify-center text-white"><button onClick={handelGoogleLogin}><FaGoogle></FaGoogle> <span>Google</span></button></div>
+                    <div className="w-1/2 bg-lime-600 p-2 flex items-center justify-center text-white"><button><FaGithub></FaGithub> <span>Github</span></button> </div>
+                </div>
                 <div className="text-center mt-4">
                 <span className="text-gray-600">Don&apos;t have an account?<Link to="/register">Register</Link></span>
                 </div>

@@ -1,0 +1,144 @@
+[
+      {
+        "id": 1,
+        "class_name": "Basketball Basics",
+        "class_img": "https://i.ibb.co/SNM46gm/1.webp",
+        "instructor_name": "John Smith",
+        "instructor_email": "john.smith@example.com",
+        "available_seats": 10,
+        "price": 50,
+        "category": "popular"
+      },
+      {
+        "id": 2,
+        "class_name": "Football Fundamentals",
+        "class_img": "https://i.ibb.co/tHmzHDQ/2.webp",
+        "instructor_name": "Sarah Johnson",
+        "instructor_email": "sarah.johnson@example.com",
+        "available_seats": 8,
+        "price": 60,
+        "category": "popular"
+      },
+      {
+        "id": 3,
+        "class_name": "Tennis Techniques",
+        "class_img": "https://i.ibb.co/7Y3q8zB/3.jpg",
+        "instructor_name": "Michael Davis",
+        "instructor_email": "michael.davis@example.com",
+        "available_seats": 5,
+        "price": 40,
+        "category": "popular"
+      },
+      {
+        "id": 4,
+        "class_name": "Golf Basics",
+        "class_img": "https://i.ibb.co/8Pxmdtt/4.webp",
+        "instructor_name": "Emily Wilson",
+        "instructor_email": "emily.wilson@example.com",
+        "available_seats": 7,
+        "price": 70,
+        "category": "popular"
+      },
+      {
+        "id": 5,
+        "class_name": "Swimming Techniques",
+        "class_img": "https://i.ibb.co/CzG8KQt/5.png",
+        "instructor_name": "David Thompson",
+        "instructor_email": "david.thompson@example.com",
+        "available_seats": 12,
+        "price": 55,
+        "category": "popular"
+      },
+      {
+        "id": 6,
+        "class_name": "Yoga for Beginners",
+        "class_img": "https://i.ibb.co/6RVFWb2/6.jpg",
+        "instructor_name": "Amy Roberts",
+        "instructor_email": "amy.roberts@example.com",
+        "available_seats": 6,
+        "price": 45,
+        "category": "popular"
+      },
+      {
+        "id": 7,
+        "class_name": "Running Essentials",
+        "class_img": "https://i.ibb.co/BNx9bFf/7.webp",
+        "instructor_name": "Mark Anderson",
+        "instructor_email": "mark.anderson@example.com",
+        "available_seats": 15,
+        "price": 30,
+        "category": "regular"
+      },
+      {
+        "id": 8,
+        "class_name": "Cycling Basics",
+        "class_img": "https://i.ibb.co/ncm3gMw/8.jpg",
+        "instructor_name": "Jennifer Lee",
+        "instructor_email": "jennifer.lee@example.com",
+        "available_seats": 20,
+        "price": 35,
+        "category": "regular"
+      },
+      {
+        "id": 9,
+        "class_name": "Martial Arts 101",
+        "class_img": "https://i.ibb.co/CnzT609/9.jpg",
+        "instructor_name": "Robert Johnson",
+        "instructor_email": "robert.johnson@example.com",
+        "available_seats": 18,
+        "price": 60,
+        "category": "regular"
+      },
+      {
+        "id": 10,
+        "class_name": "Pilates for Strength",
+        "class_img": "https://i.ibb.co/1sjzpZt/10.webp",
+        "instructor_name": "Laura Thompson",
+        "instructor_email": "laura.thompson@example.com",
+        "available_seats": 10,
+        "price": 50,
+        "category": "regular"
+      },
+      {
+        "id": 11,
+        "class_name": "Volleyball Skills",
+        "class_img": "https://i.ibb.co/5My7YfD/11.jpg",
+        "instructor_name": "Daniel Wilson",
+        "instructor_email": "daniel.wilson@example.com",
+        "available_seats": 15,
+        "price": 40,
+        "category": "regular"
+      },
+      {
+        "id": 12,
+        "class_name": "Soccer Fundamentals",
+        "class_img": "https://i.ibb.co/6w47FQP/12.jpg",
+        "instructor_name": "Emma Davis",
+        "instructor_email": "emma.davis@example.com",
+        "available_seats": 8,
+        "price": 55,
+        "category": "regular"
+      },
+      {
+        "id": 13,
+        "class_name": "Badminton Basics",
+        "class_img": "https://i.ibb.co/vvb9HRb/13.webp",
+        "instructor_name": "Christopher Johnson",
+        "instructor_email": "christopher.johnson@example.com",
+        "available_seats": 12,
+        "price": 45,
+        "category": "regular"
+      },
+      {
+        "id": 14,
+        "class_name": "Boxing",
+        "class_img": "https://i.ibb.co/Gv20dsn/14.jpg",
+        "instructor_name": "Matthew Smith",
+        "instructor_email": "matthew.smith@example.com",
+        "available_seats": 12,
+        "price": 45,
+        "category": "regular"
+      }
+    ]
+
+  
