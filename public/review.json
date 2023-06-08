@@ -1,0 +1,38 @@
+[
+    {
+      "img": "instructor1.jpg",
+      "name": "John Smith",
+      "email": "john.smith@example.com",
+      "rating": 5,
+      "description": "Experienced instructor specializing in strength training and conditioning."
+    },
+    {
+      "img": "instructor2.jpg",
+      "name": "Emma Johnson",
+      "email": "emma.johnson@example.com",
+      "rating": 5,
+      "description": "Certified yoga instructor passionate about promoting mindfulness and holistic wellness."
+    },
+    {
+      "img": "instructor3.jpg",
+      "name": "Michael Brown",
+      "email": "michael.brown@example.com",
+      "rating": 4,
+      "description": "Highly skilled martial arts instructor with a black belt in Taekwondo."
+    },
+    {
+      "img": "instructor4.jpg",
+      "name": "Sophia Davis",
+      "email": "sophia.davis@example.com",
+      "rating": 5,
+      "description": "Dance instructor specialized in various styles including ballet, jazz, and hip-hop."
+    },
+    {
+      "img": "instructor5.jpg",
+      "name": "William Taylor",
+      "email": "william.taylor@example.com",
+      "rating": 4,
+      "description": "Experienced personal trainer dedicated to helping clients achieve their fitness goals."
+    }
+  ]
+  
