@@ -15,15 +15,15 @@ const ClassesCard = ({ classItem }) => {
   } = classItem;
 
   const {user} = useContext(AuthContext);
-  console.log(user);
+  // console.log(user);
   const navigate = useNavigate();
   const [, refetch] = useCart()
 
   const handelAdToCard = classItem => {
     // console.log(classItem);
-    console.log(user);
+    // console.log(user);
     if(user && user?.email){
-        const cartItem = {clasId: classItem._id, class_name, class_img, instructor_name, instructor_email, available_seats, price}
+        const cartItem = {clasId: classItem._id, userEmail: user?.email, class_name, class_img, instructor_name, instructor_email, available_seats, price}
         fetch('http://localhost:5000/carts', {
             method: 'POST',
             headers: {

@@ -8,6 +8,8 @@ import Login from "../pages/Login/Login";
 import NotFound from "../pages/Shared/NowFound/NotFound";
 import Classes from "../pages/Classes/Classes";
 import Instructors from "../pages/Instructors/Instructors";
+import Dashbord from "../Layout/Dashbord";
+import MyClasses from "../pages/Dashbord/MyClasses/MyClasses";
 
  const router = createBrowserRouter([
     {
@@ -40,6 +42,16 @@ import Instructors from "../pages/Instructors/Instructors";
         },
       ]
     },
+    {
+      path: '/dashbord',
+      element: <Dashbord></Dashbord>,
+      children: [
+        {
+          path: '/dashbord/myClasses',
+          element: <MyClasses></MyClasses>
+        }
+      ]
+    }
   ]);
 
   export default router
