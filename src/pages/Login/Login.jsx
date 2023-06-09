@@ -12,8 +12,8 @@ const Login = () => {
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
-        const user = {email, password};
-        console.log(user);
+        // const user = {email, password};
+        // console.log(user);
         signUser(email, password)
         .then(result =>{
             const loggedUser = result.user;

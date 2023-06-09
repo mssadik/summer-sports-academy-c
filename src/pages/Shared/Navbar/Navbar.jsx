@@ -2,25 +2,33 @@ import { Link } from "react-router-dom";
 import logo from '../../../../public/all-imges/logo/logo.webp'
 import { useContext } from "react";
 import { AuthContext } from "../../../Providers/AuthProvider";
+import useCart from "../../../hooks/useCart";
 
 const Navbar = () => {
-    const {user, logOut} = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
+    const [cart] = useCart();
+    // console.log('cart', cart)
 
-    const handelLogOut = () =>{
+    const handelLogOut = () => {
         logOut()
-        .tehn(() =>{})
-        .catch(() =>{})
+            .tehn(() => { })
+            .catch(() => { })
     }
     const navOptions = <>
         <li><Link to="/">Home</Link></li>
         <li><Link to="/register">Register</Link></li>
         <li><Link to="/classes">Classes</Link></li>
+        
         <li><Link to="/instructors">Instructors</Link></li>
-        
-        
+
+
         {
             user ? <li><Link onClick={handelLogOut} to="/">Log Out</Link></li> : <li><Link to="/login">Login</Link></li>
         }
+        <li><Link to="/"><button className="btn">
+            Bookings
+            <div className="badge badge-secondary">{cart?.length || 0}</div>
+        </button></Link></li>
     </>
 
     return (
