@@ -1,24 +1,63 @@
-import { useContext, useEffect } from "react";
+import { useContext, } from "react";
 import { AuthContext } from "../../../../Providers/AuthProvider";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const AddAClass = () => {
 
     const { user } = useContext(AuthContext);
     // console.log(user);
+    const navigate = useNavigate();
 
     const handelSubmit = (event) => {
         event.preventDefault();
         const form = event.target;
-        const className = form.className.value;
-        const classImage = form.classImage.value;
-        const instructorName = form.instructorName.value;
-        const instructorEmail = form.instructorEmail.value;
-        const availableSeats = form.availableSeats.value;
+        const class_name = form.className.value;
+        const class_img = form.classImage.value;
+        const instructor_name = form.instructorName.value;
+        const instructor_email = form.instructorEmail.value;
+        const available_seats = form.availableSeats.value;
         const price = form.price.value;
         const status = form.status.value;
-        const item = { className, classImage, instructorName, instructorEmail, availableSeats, price, status }
+        const item = { class_name, class_img, instructor_name, instructor_email, available_seats, price, status }
         console.log(item);
         
+        if(user && user?.email){
+            const classItem = { userEmail: user?.email, class_name, class_img, instructor_name, instructor_email, available_seats, price, status}
+            fetch('http://localhost:5000/classes', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(classItem)
+            })
+            .then(res => res.json())
+            .then(data => {
+                if(data.insertedId){
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Food added on the cart.',
+                        showConfirmButton: false,
+                        timer: 1500
+                      })
+                }
+            })
+        }
+        else{
+            Swal.fire({
+                title: 'Please login to order the food',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Login now!'
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  navigate('/login')
+                }
+              })
+        }
         
     }
 

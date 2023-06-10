@@ -90,23 +90,23 @@ const Register = () => {
                 <form onSubmit={handelSubmit}>
                     <div className="mb-4">
                         <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-600"> Name</label>
-                        <input type="name" name="name" className="w-full border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter your email address" required />
+                        <input type="name" name="name" className="w-full border-gray-300 text-black  rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter your email address" required />
                     </div>
                     <div className="mb-4">
                         <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-600">Photo</label>
-                        <input type="text" name="photoURL" className="w-full border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter your email address" required />
+                        <input type="text" name="photoURL" className="w-full border-gray-300 text-black  rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter your email address" required />
                     </div>
                     <div className="mb-4">
                         <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-600">Email </label>
-                        <input type="email" name="email" className="w-full border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter your email address" required />
+                        <input type="email" name="email" className="w-full border-gray-300 text-black  rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter your email address" required />
                     </div>
                     <div className="mb-4">
                         <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-600">Password</label>
-                        <input type="password" name="password" className="w-full border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter your password" required />
+                        <input type="password" name="password" className="w-full border-gray-300 text-black  rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter your password" required />
                     </div>
                     <div className="mb-4">
                         <label htmlFor="confrom" className="block mb-2 text-sm font-medium text-gray-600">Password</label>
-                        <input type="password" name="confrom" className="w-full border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter your password" required />
+                        <input type="password" name="confrom" className="w-full border-gray-300 text-black  rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter your password" required />
                     </div>
                     <div className="flex items-center justify-between mb-4">
                         <label className="flex items-center">
