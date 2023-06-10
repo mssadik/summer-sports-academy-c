@@ -6,7 +6,7 @@ import { useLoaderData, useNavigate } from "react-router-dom";
 const Update = () => {
     const { user } = useContext(AuthContext);
     const classe = useLoaderData();
-    console.log(classe);
+    const  { _id, class_name, class_img, instructor_name, instructor_email, available_seats, price, status } = classe
     const navigate = useNavigate();
 
     const handelUpdate = (event) => {
@@ -24,8 +24,8 @@ const Update = () => {
         
         if(user && user?.email){
             const classItem = { userEmail: user?.email, class_name, class_img, instructor_name, instructor_email, available_seats, price, status}
-            fetch('http://localhost:5000/classes', {
-                method: 'POST',
+            fetch(`http://localhost:5000/classes/${_id}`, {
+                method: 'PUT',
                 headers: {
                     'content-type': 'application/json'
                 },
@@ -33,7 +33,7 @@ const Update = () => {
             })
             .then(res => res.json())
             .then(data => {
-                if(data.insertedId){
+                if(data.modifiedCount > 0){
                     Swal.fire({
                         position: 'top-end',
                         icon: 'success',
@@ -62,16 +62,16 @@ const Update = () => {
     }
     return (
         <div className="text-white w-full ml-20">
-            <h2 className="mb-10 text-3xl">Upadte A Class</h2>
+            <h2 className="mb-10 text-3xl">Upadte A Class {classe.class_name}</h2>
             <form onSubmit={handelUpdate}>
                 <div className="flex gap-5">
                     <div>
                         <label htmlFor="">Class Name</label><br />
-                        <input className="text-black" type="text" name="className" placeholder="Class Name" required/><br /><br />
+                        <input className="text-black" type="text" name="className" defaultValue={classe.class_name} placeholder="Class Name" required/><br /><br />
                     </div>
                     <div>
                         <label htmlFor="">Class Image</label><br />
-                        <input className="text-black" type="text" name="classImage" placeholder="Class Image" required />
+                        <input className="text-black" type="text" name="classImage" defaultValue={classe.class_img} placeholder="Class Image" required />
                     </div>
                 </div>
                 <div className="flex gap-5">
@@ -87,17 +87,17 @@ const Update = () => {
                 <div className="flex gap-5">
                     <div>
                         <label htmlFor="">Available seats </label><br />
-                        <input className="text-black" type="text" name="availableSeats" placeholder="Available Seats" required/><br /><br />
+                        <input className="text-black" type="text" name="availableSeats" defaultValue={classe.available_seats} placeholder="Available Seats" required/><br /><br />
                     </div>
                     <div>
                         <label htmlFor="">price</label><br />
-                        <input className="text-black" type="text" name="price" placeholder="Price" required/>
+                        <input className="text-black" type="text" name="price" defaultValue={classe.price} placeholder="Price" required/>
                     </div>
                 </div>
                 <div className="flex mb-5">
                     <input className="text-black" name="status" type="text" defaultValue={"pending"} required />
                 </div>
-                <input className="btn btn-primary" type="Submit" />
+                <button className="btn btn-primary">Update</button>
             </form>
         </div>
     );
