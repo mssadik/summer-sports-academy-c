@@ -6,6 +6,7 @@ import useCart from "../../../hooks/useCart";
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
+    console.log(user);
     const [cart] = useCart();
     // console.log(cart);
     // console.log('cart', cart)
@@ -24,7 +25,7 @@ const Navbar = () => {
 
 
         {
-            user ? <><li><Link onClick={handelLogOut} to="/">Log Out</Link></li>         <li><Link to="/dashbord/myClasses"> Dashbord {/* <div className=" badge-secondary">{cart?.length || 0}</div> */} <span className="badge inl badge-secondary">+{cart?.length || 0}</span> </Link></li>  </>: <li><Link to="/login">Login</Link></li>
+            user ? <><li><Link onClick={handelLogOut} to="/">Log Out</Link> </li>         <li><Link to="/dashbord/myClasses"> Dashbord {/* <div className=" badge-secondary">{cart?.length || 0}</div> */} <span className="badge inl badge-secondary">+{cart?.length || 0}</span> </Link></li> <img className="w-10 rounded-full" src={user.photoURL} alt="" />  </> : <li><Link to="/login">Login</Link></li>
         }
     </>
 
@@ -47,6 +48,7 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
+                
                 <img className="w-[50px] rounded-lg" src={logo} alt="" />
             </div>
         </div>

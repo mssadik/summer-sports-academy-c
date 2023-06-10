@@ -13,6 +13,7 @@ import Payment from "../pages/Dashbord/Payment/Payment";
 import MyClasses from "../pages/Dashbord/MyClasses/MyClasses";
 import AddAClass from "../pages/Dashbord/MyClasses/AddAClass/AddAClass";
 import MyClassess from "../pages/Dashbord/MyClassess/MyClassess";
+import Update from "../pages/Dashbord/Update/Update";
 
  const router = createBrowserRouter([
     {
@@ -64,6 +65,11 @@ import MyClassess from "../pages/Dashbord/MyClassess/MyClassess";
         {
           path: '/dashbord/myClassess',
           element: <MyClassess></MyClassess>
+        },
+        {
+          path: '/dashbord/update/:id',
+          element: <Update></Update>,
+          loader: ({params}) => fetch(`http://localhost:5000/classes/${params._id}`)
         }
       ]
     }

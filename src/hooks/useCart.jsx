@@ -22,4 +22,3 @@ const useCart = () => {
 export default useCart;
 
 
-34

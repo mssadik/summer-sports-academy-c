@@ -15,7 +15,7 @@ const Classes = () => {
             <img src="https://i.ibb.co/DrGpdkM/cc.jpg" alt="" />
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 my-10">
                 {
-                    classes?.map(classItem => <ClassesCard key={classItem._id} classItem={classItem}></ClassesCard>)
+                    classes?.map(classItem => <ClassesCard key={classItem._id} item={classItem}></ClassesCard>)
                 }
             </div>
         </div>

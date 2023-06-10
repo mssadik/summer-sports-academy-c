@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import PopularCart from "./PopularCart";
+import ClassesCard from "../../Classes/ClassesCard";
 
 const Popular = () => {
     const [classes, setClasses] = useState(null);
@@ -18,7 +18,7 @@ const Popular = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-center gap-8 ">
                 {
                     popular.map(classItem => (
-                        <PopularCart key={classItem._id} classItem={classItem} />
+                        <ClassesCard key={classItem._id} item={classItem}></ClassesCard>
                     ))
                 }
             </div>

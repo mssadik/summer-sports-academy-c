@@ -4,7 +4,7 @@ import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import useCart from "../../hooks/useCart";
 
-const ClassesCard = ({ classItem }) => {
+const ClassesCard = ({ item }) => {
   const {
     class_name,
     class_img,
@@ -12,7 +12,7 @@ const ClassesCard = ({ classItem }) => {
     instructor_email,
     available_seats,
     price,
-  } = classItem;
+  } = item;
 
   const {user} = useContext(AuthContext);
   // console.log(user);
@@ -80,7 +80,7 @@ const ClassesCard = ({ classItem }) => {
         <p className="text-gray-600"><span className="font-bold">Price:</span> <span className="font-bold text-orange-500">${price}</span></p>
       </div>
       <div className="mt-4 flex justify-center">
-        <button onClick={() => handelAdToCard(classItem)} className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-300">
+        <button onClick={() => handelAdToCard(item)} className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-300">
           Select
         </button>
       </div>

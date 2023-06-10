@@ -1,15 +1,15 @@
-import { useContext, } from "react";
-import { AuthContext } from "../../../../Providers/AuthProvider";
+import { useContext } from "react";
+import { AuthContext } from "../../../Providers/AuthProvider";
 import Swal from "sweetalert2";
-import { useNavigate } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 
-const AddAClass = () => {
-
+const Update = () => {
     const { user } = useContext(AuthContext);
-    // console.log(user);
+    const classe = useLoaderData();
+    console.log(classe);
     const navigate = useNavigate();
 
-    const handelSubmit = (event) => {
+    const handelUpdate = (event) => {
         event.preventDefault();
         const form = event.target;
         const class_name = form.className.value;
@@ -60,11 +60,10 @@ const AddAClass = () => {
         }
         
     }
-
     return (
         <div className="text-white w-full ml-20">
-            <h2 className="mb-10 text-3xl">Add A Class</h2>
-            <form onSubmit={handelSubmit}>
+            <h2 className="mb-10 text-3xl">Upadte A Class</h2>
+            <form onSubmit={handelUpdate}>
                 <div className="flex gap-5">
                     <div>
                         <label htmlFor="">Class Name</label><br />
@@ -104,4 +103,4 @@ const AddAClass = () => {
     );
 };
 
-export default AddAClass;
+export default Update;
