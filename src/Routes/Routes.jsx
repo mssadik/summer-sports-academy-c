@@ -9,7 +9,10 @@ import NotFound from "../pages/Shared/NowFound/NotFound";
 import Classes from "../pages/Classes/Classes";
 import Instructors from "../pages/Instructors/Instructors";
 import Dashbord from "../Layout/Dashbord";
+import Payment from "../pages/Dashbord/Payment/Payment";
 import MyClasses from "../pages/Dashbord/MyClasses/MyClasses";
+import AddAClass from "../pages/Dashbord/MyClasses/AddAClass/AddAClass";
+import MyClassess from "../pages/Dashbord/MyClassess/MyClassess";
 
  const router = createBrowserRouter([
     {
@@ -49,6 +52,18 @@ import MyClasses from "../pages/Dashbord/MyClasses/MyClasses";
         {
           path: '/dashbord/myClasses',
           element: <MyClasses></MyClasses>
+        },
+        {
+          path: '/dashbord/payment',
+          element: <Payment></Payment>
+        },
+        {
+          path: '/dashbord/addAClass',
+          element: <AddAClass></AddAClass>
+        },
+        {
+          path: '/dashbord/myClassess',
+          element: <MyClassess></MyClassess>
         }
       ]
     }

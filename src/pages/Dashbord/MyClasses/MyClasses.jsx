@@ -1,6 +1,7 @@
 import { FaTrashAlt } from "react-icons/fa";
 import useCart from "../../../hooks/useCart";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const MyClasses = () => {
     const [cart, refetch] = useCart();
@@ -34,14 +35,13 @@ const MyClasses = () => {
         })
     }
     return (
-        <div>
+        <div className="text-white">
             <img className="mb-5" src="https://i.ibb.co/2gCmSH3/mc.jpg" alt="" />
             <div className="uppercase font-semibold h-[60px] flex justify-evenly items-center">
                 <h3 className="text-3xl">All Class: {cart.length}</h3>
                 <h3 className="text-3xl">Total Price: ${total}</h3>
-                <button className="btn btn-warning btn-sm">PAY NOW</button>
             </div>
-            <table className="table w-full">
+            <table className="table w-full text-white">
                 {/* head */}
                 <thead className="text-white">
                     <tr>
@@ -51,6 +51,7 @@ const MyClasses = () => {
                         <th>Instructor Name</th>
                         <th>Instructor Email</th>
                         <th>Available Seats</th>
+                        <th>Pameny</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -74,6 +75,7 @@ const MyClasses = () => {
                             <td> {item.instructor_email} </td>
                             <td> {item.available_seats} </td>
                             <td className="text-end">${item.price}</td>
+                            <td><Link><button className="btn btn-warning btn-sm">PAY NOW</button></Link></td>
                             <td>
                                 <button onClick={() => handleDelete(item)} className="btn btn-ghost bg-red-600  text-white"><FaTrashAlt></FaTrashAlt></button>
                             </td>
