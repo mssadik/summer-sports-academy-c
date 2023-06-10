@@ -6,7 +6,7 @@ import { useLoaderData, useNavigate } from "react-router-dom";
 const Update = () => {
     const { user } = useContext(AuthContext);
     const classe = useLoaderData();
-    const  { _id, class_name, class_img, instructor_name, instructor_email, available_seats, price, status } = classe
+    const  { _id,} = classe
     const navigate = useNavigate();
 
     const handelUpdate = (event) => {

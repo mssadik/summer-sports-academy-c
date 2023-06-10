@@ -1,10 +1,11 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 import Swal from "sweetalert2";
 import { FaGithub, FaGoogle } from "react-icons/fa";
 
 const Register = () => {
+    const [error, setError] = useState('')
     const { createUser, googleSignIn, updateUserProfile } = useContext(AuthContext);
     const naviget = useNavigate();
     const handelSubmit = event => {
@@ -24,30 +25,49 @@ const Register = () => {
                 const user = result.user;
                 console.log(user);
                 updateUserProfile(name, photoURL)
-                .then(() =>{})
-                .catch(() =>{})
+                    .then(() => {
+                        setError('')
+                        const saveUser = { name, email }
+                        fetch('http://localhost:5000/users', {
+                            method: 'POST',
+                            headers: {
+                                'content-type': 'application/json'
+                            },
+                            body: JSON.stringify(saveUser)
+                        })
+                            .then(res => res.json())
+                            .then(data => {
+                                if (data.insertedId) {
+                                    naviget('/')
+                                    const Toast = Swal.mixin({
+                                        toast: true,
+                                        position: 'top-end',
+                                        showConfirmButton: false,
+                                        timer: 3000,
+                                        timerProgressBar: true,
+                                        didOpen: (toast) => {
+                                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                        }
+                                    })
 
-                naviget('/')
-                const Toast = Swal.mixin({
-                    toast: true,
-                    position: 'top-end',
-                    showConfirmButton: false,
-                    timer: 3000,
-                    timerProgressBar: true,
-                    didOpen: (toast) => {
-                        toast.addEventListener('mouseenter', Swal.stopTimer)
-                        toast.addEventListener('mouseleave', Swal.resumeTimer)
-                    }
-                })
+                                    Toast.fire({
+                                        icon: 'success',
+                                        title: 'Signed in successfully'
+                                    })
+                                }
+                            })
+                    })
+                    .catch((e) => {
+                        setError(e.message);
+                    })
 
-                Toast.fire({
-                    icon: 'success',
-                    title: 'Signed in successfully'
-                })
-                
+
+
             })
             .catch(e => {
                 console.log(e);
+                setError(e.message)
             })
 
 
@@ -58,6 +78,21 @@ const Register = () => {
         googleSignIn()
             .then(result => {
                 const loggedUser = result.user;
+                const saveUser = {name: loggedUser.displayName, email: loggedUser.email}
+                fetch('http://localhost:5000/users', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(saveUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.insertedId) {
+                            naviget('/')
+
+                        }
+                    })
                 console.log(loggedUser);
                 const Toast = Swal.mixin({
                     toast: true,
@@ -115,6 +150,7 @@ const Register = () => {
                         </label>
                         <a href="#" className="text-blue-500 text-sm hover:underline">Forgot password?</a>
                     </div>
+                    <p className="text-red-700">{error}</p>
                     <button type="submit" className="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">Register Now</button>
                 </form>
                 <div className="divider">OR</div>

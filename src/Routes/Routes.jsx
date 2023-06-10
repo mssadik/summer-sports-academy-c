@@ -14,6 +14,8 @@ import MyClasses from "../pages/Dashbord/MyClasses/MyClasses";
 import AddAClass from "../pages/Dashbord/MyClasses/AddAClass/AddAClass";
 import MyClassess from "../pages/Dashbord/MyClassess/MyClassess";
 import Update from "../pages/Dashbord/Update/Update";
+import ManageClasses from "../pages/Dashbord/ManageClasses/ManageClasses";
+import ManageUsers from "../pages/Dashbord/ManageUsers/ManageUsers";
 
  const router = createBrowserRouter([
     {
@@ -70,6 +72,14 @@ import Update from "../pages/Dashbord/Update/Update";
           path: '/dashbord/update/:id',
           element: <Update></Update>,
           loader: ({params}) => fetch(`http://localhost:5000/classes/${params.id}`)
+        },
+        {
+          path: '/dashbord/manageClasses',
+          element: <ManageClasses></ManageClasses>
+        },
+        {
+          path: '/dashbord/manageUsers',
+          element: <ManageUsers></ManageUsers>
         }
       ]
     }
