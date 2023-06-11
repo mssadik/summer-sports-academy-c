@@ -1,7 +1,11 @@
 import { Link, Outlet } from "react-router-dom";
+import useAdmin from "../hooks/useAdmin";
+// import useInstructor from "../hooks/useInstructor";
 
 const Dashboard = () => {
-    const  admin = true;
+    // const  admin = true;
+    const [isAdmin] = useAdmin();
+    // const [isInstructor] = useInstructor();
     return (
 
         <div className="drawer lg:drawer-open">
@@ -16,25 +20,26 @@ const Dashboard = () => {
                 <ul className="menu p-4 w-80 h-full  text-base-content bg-slate-700" style={{ color: 'white' }}>
                     {/* {
                         isInstructor ? <>
+                            <li><Link to="/dashbord/AddAClass">Instructor Home</Link></li>
                             <li><Link to="/dashbord/AddAClass">Add A Class</Link></li>
                             <li><Link to="/dashbord/myClassess">My Classes</Link></li>
                         </> : <>
                             <li><Link to="/dashbord/myClasses">My Selected Classes</Link></li>
-                            <li><a>Sidebar Item 2</a></li>
+                            <li><Link to="/dashbord/myClasses">Pament History</Link></li>
                         </>
                     } */}
 
 
 
                     {
-                        admin ? <>
+                        isAdmin ? <>
                             <li><Link to="/dashbord">Admin Home</Link></li>
                             <li><Link to="/dashbord/manageClasses">Manage Classes</Link></li>
                             <li><Link to="/dashbord/manageUsers">Manage Users</Link></li>
                         </> : <>
+                            <li><Link to="/dashbord/myClasses">Student Home</Link></li>
                             <li><Link to="/dashbord/myClasses">My Selected Classes</Link></li>
                             <li><Link to="/dashbord/myClasses">Pament History</Link></li>
-                            <li><a>Sidebar Item 2</a></li>
                         </>
                     }
 
