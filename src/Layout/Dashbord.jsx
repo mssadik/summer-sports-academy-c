@@ -1,7 +1,7 @@
 import { Link, Outlet } from "react-router-dom";
 
 const Dashboard = () => {
-    const admin = true;
+    const  admin = true;
     return (
 
         <div className="drawer lg:drawer-open">
@@ -23,8 +23,12 @@ const Dashboard = () => {
                             <li><a>Sidebar Item 2</a></li>
                         </>
                     } */}
+
+
+
                     {
                         admin ? <>
+                            <li><Link to="/dashbord">Admin Home</Link></li>
                             <li><Link to="/dashbord/manageClasses">Manage Classes</Link></li>
                             <li><Link to="/dashbord/manageUsers">Manage Users</Link></li>
                         </> : <>
@@ -33,8 +37,13 @@ const Dashboard = () => {
                             <li><a>Sidebar Item 2</a></li>
                         </>
                     }
+
+
+
+                    <div className="divider border-b"></div>
                     {/* Sidebar content here */}
                     <li><Link to="/">Home</Link></li>
+                    <li><Link to="/classes">Classes</Link></li>
                 </ul>
             </div>
         </div>

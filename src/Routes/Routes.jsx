@@ -16,6 +16,7 @@ import MyClassess from "../pages/Dashbord/MyClassess/MyClassess";
 import Update from "../pages/Dashbord/Update/Update";
 import ManageClasses from "../pages/Dashbord/ManageClasses/ManageClasses";
 import ManageUsers from "../pages/Dashbord/ManageUsers/ManageUsers";
+import PrivateRoute from './PrivateRoute';
 
  const router = createBrowserRouter([
     {
@@ -66,7 +67,7 @@ import ManageUsers from "../pages/Dashbord/ManageUsers/ManageUsers";
         },
         {
           path: '/dashbord/myClassess',
-          element: <MyClassess></MyClassess>
+          element: <PrivateRoute><MyClassess></MyClassess></PrivateRoute>
         },
         {
           path: '/dashbord/update/:id',
@@ -75,11 +76,11 @@ import ManageUsers from "../pages/Dashbord/ManageUsers/ManageUsers";
         },
         {
           path: '/dashbord/manageClasses',
-          element: <ManageClasses></ManageClasses>
+          element: <PrivateRoute><ManageClasses></ManageClasses></PrivateRoute>
         },
         {
           path: '/dashbord/manageUsers',
-          element: <ManageUsers></ManageUsers>
+          element: <PrivateRoute><ManageUsers></ManageUsers></PrivateRoute>
         }
       ]
     }
