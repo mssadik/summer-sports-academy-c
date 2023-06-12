@@ -4,6 +4,9 @@ import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 
 const MyClasses = () => {
+
+    
+
     const [cart, refetch] = useCart();
     const total = cart.reduce((sum, item) => item.price + sum, 0);
     const handleDelete = item => {
@@ -34,6 +37,12 @@ const MyClasses = () => {
             }
         })
     }
+
+
+    const handelPrice = (price) =>{
+        localStorage.setItem("price", price)
+    }
+
     return (
         <div className="text-white">
             <img className="mb-5" src="https://i.ibb.co/2gCmSH3/mc.jpg" alt="" />
@@ -75,7 +84,7 @@ const MyClasses = () => {
                             <td> {item.instructor_email} </td>
                             <td> {item.available_seats} </td>
                             <td className="text-end">${item.price}</td>
-                            <td><Link><button className="btn btn-warning btn-sm">PAY NOW</button></Link></td>
+                            <td><Link to="/dashbord/payment"><button onClick={()=>handelPrice(item.price)} className="btn btn-warning btn-sm ">PAY NOW</button></Link></td>
                             <td>
                                 <button onClick={() => handleDelete(item)} className="btn btn-ghost bg-red-600  text-white"><FaTrashAlt></FaTrashAlt></button>
                             </td>

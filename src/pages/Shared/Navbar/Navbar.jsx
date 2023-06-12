@@ -24,8 +24,9 @@ const Navbar = () => {
 
 
         {
-            user ? <><li><Link onClick={handelLogOut} to="/">Log Out</Link> </li>         <li><Link to="/dashbord"> Dashbord {/* <div className=" badge-secondary">{cart?.length || 0}</div> */} <span className="badge inl badge-secondary">+{cart?.length || 0}</span> </Link></li> <img className="w-10 rounded-full" src={user.photoURL} alt="" />  </> : <li><Link to="/login">Login</Link></li>
+            user ? <><li><Link onClick={handelLogOut} to="/">Log Out</Link> </li>  <img className="w-10 rounded-full" src={user.photoURL} alt="" />  <p>{user.email}</p> </> : <li><Link to="/login">Login</Link></li>
         }
+         <li><Link to="/dashbord"> Dashbord  <span className="badge inl badge-secondary">+{cart?.length || 0}</span> </Link></li>
     </>
 
     return (
