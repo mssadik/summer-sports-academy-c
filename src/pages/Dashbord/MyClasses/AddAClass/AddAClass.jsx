@@ -16,7 +16,7 @@ const AddAClass = () => {
         const class_img = form.classImage.value;
         const instructor_name = form.instructorName.value;
         const instructor_email = form.instructorEmail.value;
-        const available_seats = form.availableSeats.value;
+        const available_seats = parseInt(form.availableSeats.value);
         const price = form.price.value;
         const status = form.status.value;
         const item = { class_name, class_img, instructor_name, instructor_email, available_seats, price, status }
@@ -78,11 +78,11 @@ const AddAClass = () => {
                 <div className="flex gap-5">
                     <div>
                         <label htmlFor="">Instructor name </label><br />
-                        <input className="text-black" type="text" name="instructorName" defaultValue={user?.displayName} /><br /><br />
+                        <input className="text-black" type="text" name="instructorName" defaultValue={user?.displayName} readOnly/><br /><br />
                     </div>
                     <div>
                         <label htmlFor="">Instructor email</label><br />
-                        <input className="text-black" type="text" name="instructorEmail" defaultValue={user?.email} />
+                        <input className="text-black" type="text" name="instructorEmail" defaultValue={user?.email} readOnly />
                     </div>
                 </div>
                 <div className="flex gap-5">
@@ -98,7 +98,7 @@ const AddAClass = () => {
                 <div className="flex mb-5">
                     <input className="text-black" name="status" type="text" defaultValue={"pending"} required />
                 </div>
-                <input className="btn btn-primary" type="Submit" />
+                <button className="btn btn-primary">Add A Class</button>
             </form>
         </div>
     );
