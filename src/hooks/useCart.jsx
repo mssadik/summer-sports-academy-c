@@ -13,7 +13,7 @@ const useCart = () => {
         queryFn: async () => {
             const res = await fetch(`http://localhost:5000/carts?email=${user?.email}`,{
                 headers: {
-                    authorization: `Beare ${localStorage.getItem('access-token')}`
+                    authorization: `Bearer ${localStorage.getItem('access-token')}`
                 }
             })
             return res.json();

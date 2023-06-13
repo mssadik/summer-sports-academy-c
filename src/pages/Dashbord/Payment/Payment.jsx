@@ -11,7 +11,7 @@ const Payment = () => {
         <div className="border w-full">
             <h2 className="text-3xl">taka: ${price}</h2>
             <Elements stripe={stripePromise}>
-                <CheckoutForm></CheckoutForm>
+                <CheckoutForm price={price}></CheckoutForm>
             </Elements>
         </div>
     );
