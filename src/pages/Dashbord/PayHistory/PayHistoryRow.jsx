@@ -1,5 +1,5 @@
 const PayHistoryRow = ({ data }) => {
-    console.log(data);
+    // console.log(data);
     const { name, price, transactionId, userEmail, userName, date } = data;
     return (
         <tr>

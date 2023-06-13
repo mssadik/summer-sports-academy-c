@@ -18,6 +18,7 @@ import ManageClasses from "../pages/Dashbord/ManageClasses/ManageClasses";
 import ManageUsers from "../pages/Dashbord/ManageUsers/ManageUsers";
 import PrivateRoute from './PrivateRoute';
 import PayHistory from "../pages/Dashbord/PayHistory/PayHistory";
+import MyEnrolledClasses from "../pages/Dashbord/MyEnrolledClasses/MyEnrolledClasses";
 
  const router = createBrowserRouter([
     {
@@ -65,6 +66,10 @@ import PayHistory from "../pages/Dashbord/PayHistory/PayHistory";
         {
           path: '/dashbord/payHistory',
           element: <PayHistory></PayHistory>
+        },
+        {
+          path: '/dashbord/myEnrolledClasses',
+          element: <MyEnrolledClasses></MyEnrolledClasses>
         },
         {
           path: '/dashbord/addAClass',
