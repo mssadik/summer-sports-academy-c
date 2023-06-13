@@ -17,6 +17,7 @@ import Update from "../pages/Dashbord/Update/Update";
 import ManageClasses from "../pages/Dashbord/ManageClasses/ManageClasses";
 import ManageUsers from "../pages/Dashbord/ManageUsers/ManageUsers";
 import PrivateRoute from './PrivateRoute';
+import PayHistory from "../pages/Dashbord/PayHistory/PayHistory";
 
  const router = createBrowserRouter([
     {
@@ -60,6 +61,10 @@ import PrivateRoute from './PrivateRoute';
         {
           path: '/dashbord/payment',
           element: <Payment></Payment>
+        },
+        {
+          path: '/dashbord/payHistory',
+          element: <PayHistory></PayHistory>
         },
         {
           path: '/dashbord/addAClass',

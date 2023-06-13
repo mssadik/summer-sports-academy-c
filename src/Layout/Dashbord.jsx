@@ -35,7 +35,7 @@ const Dashboard = () => {
             <>
               <li><Link to="/dashbord/myClasses">Student Home</Link></li>
               <li><Link to="/dashbord/myClasses">My Selected Classes</Link></li>
-              <li><Link to="/dashbord/myClasses">Payment History</Link></li>
+              <li><Link to="/dashbord/payHistory">Payment History</Link></li>
             </>
           )}
           <div className="divider border-b"></div>

@@ -3,8 +3,9 @@ import { useElements, useStripe } from '@stripe/react-stripe-js';
 import { CardElement } from '@stripe/react-stripe-js';
 import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../../Providers/AuthProvider';
+import Swal from 'sweetalert2';
 
-const CheckoutForm = ({ price, name }) => {
+const CheckoutForm = ({ price, name, itemId }) => {
     // console.log(price);
     const stripe = useStripe();
     const elements = useElements();
@@ -85,7 +86,9 @@ const CheckoutForm = ({ price, name }) => {
                 userName: user?.displayName,
                 transactionId: paymentIntent.id,
                 price,
-                name
+                name,
+                date: new Date(),
+                itemId: itemId,
             }
 
             fetch('http://localhost:5000/payments', {
@@ -101,7 +104,13 @@ const CheckoutForm = ({ price, name }) => {
             .then(data => {
                 if(data.insertedId){
                     // alert
-                    alert('payment done')
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'payment successfully',
+                        showConfirmButton: false,
+                        timer: 1500
+                      })
                 }
             });
         }
@@ -130,7 +139,6 @@ const CheckoutForm = ({ price, name }) => {
                 </button>
             </form>
             {cardError && <p className='text-red-600'>{cardError}</p>}
-            {transactionId && <p className='text-green-600'>Your Transaction ID: {transactionId}</p>}
         </>
     );
 };
