@@ -39,8 +39,9 @@ const MyClasses = () => {
     }
 
 
-    const handelPrice = (price) =>{
+    const handelPrice = (price, name) =>{
         localStorage.setItem("price", price)
+        localStorage.setItem('name', name)
     }
 
     return (
@@ -84,7 +85,7 @@ const MyClasses = () => {
                             <td> {item.instructor_email} </td>
                             <td> {item.available_seats} </td>
                             <td className="text-end">${item.price}</td>
-                            <td><Link to="/dashbord/payment"><button onClick={()=>handelPrice(item.price)} className="btn btn-warning btn-sm ">PAY NOW</button></Link></td>
+                            <td><Link to="/dashbord/payment"><button onClick={()=>handelPrice(item.price, item.class_name)} className="btn btn-warning btn-sm ">PAY NOW</button></Link></td>
                             <td>
                                 <button onClick={() => handleDelete(item)} className="btn btn-ghost bg-red-600  text-white"><FaTrashAlt></FaTrashAlt></button>
                             </td>

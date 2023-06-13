@@ -4,32 +4,32 @@ import { CardElement } from '@stripe/react-stripe-js';
 import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../../Providers/AuthProvider';
 
-const CheckoutForm = ({ price }) => {
+const CheckoutForm = ({ price, name }) => {
     // console.log(price);
     const stripe = useStripe();
     const elements = useElements();
     const [cardError, setCardError] = useState('');
     const [clientSecret, setClientSecret] = useState('');
-    const {user} = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
     const [processing, setProcessing] = useState(false);
     const [transactionId, setTransactionId] = useState('');
     // console.log(clientSecret);
 
     useEffect(() => {
-      if(price > 0){
-        fetch('http://localhost:5000/create-payment-intent', {
-            method: 'POST',
-            headers: {
-                'content-type':'application/json',
-                authorization: `Bearer ${localStorage.getItem('access-token')}`
-            },
-            body: JSON.stringify({price})
-        })
-        .then(res => res.json())
-        .then(data => {
-            setClientSecret(data.clientSecret)
-        } )
-      }
+        if (price > 0) {
+            fetch('http://localhost:5000/create-payment-intent', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json',
+                    authorization: `Bearer ${localStorage.getItem('access-token')}`
+                },
+                body: JSON.stringify({ price })
+            })
+                .then(res => res.json())
+                .then(data => {
+                    setClientSecret(data.clientSecret)
+                })
+        }
     }, [price])
 
 
@@ -44,7 +44,7 @@ const CheckoutForm = ({ price }) => {
         if (card === null) {
             return;
         }
-        const { error, paymentMethod } = await stripe.createPaymentMethod({
+        const { error, } = await stripe.createPaymentMethod({
             type: 'card',
             card
         });
@@ -59,28 +59,52 @@ const CheckoutForm = ({ price }) => {
 
         setProcessing(true);
 
-        const {paymentIntent, error: confirmError} = await stripe.confirmCardPayment(
+        const { paymentIntent, error: confirmError } = await stripe.confirmCardPayment(
             clientSecret,
             {
-              payment_method: {
-                card: card,
-                billing_details: {
-                  email: user?.email || 'no email',
-                  name: user?.displayName || 'no name'
+                payment_method: {
+                    card: card,
+                    billing_details: {
+                        email: user?.email || 'no email',
+                        name: user?.displayName || 'no name'
+                    },
                 },
-              },
             },
-          );
-          
-          if(confirmError){
+        );
+
+        if (confirmError) {
             console.log(confirmError);
-          }
-          console.log('payment intent',paymentIntent);
-          setProcessing(false);
-          if(paymentIntent.status === 'succeeded'){
+        }
+        console.log('payment intent', paymentIntent);
+        setProcessing(false);
+        if (paymentIntent.status === 'succeeded') {
             setTransactionId(paymentIntent.id)
-            
-          }
+            // saving info for payment
+            const payment = {
+                userEmail: user?.email,
+                userName: user?.displayName,
+                transactionId: paymentIntent.id,
+                price,
+                name
+            }
+
+            fetch('http://localhost:5000/payments', {
+                method: 'POST',
+                headers: {
+                    authorization: `Bearer ${localStorage.getItem('access-token')}`,
+                    'Content-Type': 'application/json'
+
+                },
+                body: JSON.stringify(payment)
+            })
+            .then(res => res.json())
+            .then(data => {
+                if(data.insertedId){
+                    // alert
+                    alert('payment done')
+                }
+            });
+        }
     }
     return (
         <>

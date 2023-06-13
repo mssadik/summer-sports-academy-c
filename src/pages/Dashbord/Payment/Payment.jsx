@@ -6,12 +6,12 @@ const stripePromise = loadStripe(import.meta.env.VITE_Payment_Gateway_PK);
 const Payment = () => {
     
     const price = localStorage.getItem("price")
-    
+    const name = localStorage.getItem('name')
     return (
         <div className="border w-full">
-            <h2 className="text-3xl">taka: ${price}</h2>
+            <h2 className="text-3xl">taka: ${price} name: {name}</h2>
             <Elements stripe={stripePromise}>
-                <CheckoutForm price={price}></CheckoutForm>
+                <CheckoutForm name={name} price={price}></CheckoutForm>
             </Elements>
         </div>
     );
