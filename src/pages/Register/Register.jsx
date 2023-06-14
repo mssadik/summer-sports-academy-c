@@ -18,6 +18,25 @@ const Register = () => {
         const confrom = form.confrom.value;
         const user = { name, photoURL, email, password, confrom }
         console.log(user);
+        if (password.length < 6) {
+            setError('Password should be at least 6 characters long');
+            return;
+          }
+        
+          if (!/[A-Z]/.test(password)) {
+            setError('Password should contain at least one uppercase letter');
+            return;
+          }
+        
+          if (!/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
+            setError('Password should contain at least one special character');
+            return;
+          }
+        
+          if (password !== confrom) {
+            setError('Passwords do not match');
+            return;
+          }
 
         //Email password register
         createUser(email, password)

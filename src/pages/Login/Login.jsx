@@ -3,8 +3,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 import Swal from "sweetalert2";
 import { FaGithub, FaGoogle } from "react-icons/fa";
+import { useState } from "react";
 
 const Login = () => {
+    const [error, setError] = useState('')
     const naviget = useNavigate();
     const {signUser, googleSignIn} = useContext(AuthContext);
     const handelSubmit = event =>{
@@ -28,7 +30,7 @@ const Login = () => {
               })
         })
         .catch(e =>{
-            console.log(e);
+            setError(e.message)
         })
     }
     const handelGoogleLogin = () =>{
@@ -58,6 +60,7 @@ const Login = () => {
                         </label>
                         <a href="#" className="text-blue-500 text-sm hover:underline">Forgot password?</a>
                     </div>
+                    <p className="text-red-500">{error}</p>
                     <button type="submit" className="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">Log in</button>
                 </form>
                 <div className="divider">OR</div>
